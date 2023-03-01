@@ -7,7 +7,7 @@
     <script src="jatos.js"></script>
     <script type="text/javascript" src="jquery.min.js" defer></script>
     <script type="text/javascript" src="rivets.bundle.min.js" defer></script>
-    <script type="text/javascript" src="app2.js" defer></script>
+    <script type="text/javascript" src="app.js" defer></script>
    
 
 </head>
@@ -43,53 +43,13 @@
                 <input id="current" type="text"
                        rv-enabled="game.countdown">
                 <br>
-                <span class="subtext">Press enter to submit after each item</span>
+                <span class="subtext">Press enter after each item</span>
             </div>
             <div id="timer">{game.countdown | toMinutes}</div>
         </div>
         <div id="items">{game.items | length} {game.category} named</div>
         <div id="items"></div>
     </div>
-
-    <div id="between_categories">
-        <h1>Times up!</h1>
-        You named { game.items | length } {game.category}.<br><br>
-
-        You have completed { game.gamenum } of 2 rounds.<br><br>
-
-        You will now have 30 seconds to count backwards from one number by another number.  <br><br>
-        Don't worry about making a mistake and having the remainder of your answers be off. Just continue counting backwards from that number onwards.  <br> <br>
-        <a class="start" href="#">Start Numbers Task</a>
-    </div>
-
-
-    <!--<div id="between_distractors">
-        <h1>Time's up!</h1>
-
-        You counted {distractor.items | length} numbers. <br><br>
-        The next round will involve listing items again for a category.  This may or may not be a category you have already done.
-        If it is a category you've already done, it's OK to list items you've
-        listed before, but you may also list new items. Please try to list as
-        many items as possible, but only list an item once per round.<br><br>
-
-        <a class="start" href="#">Continue to Next Task</a>
-    </div>-->
-
-    <!--<div id="dist_trial">
-
-        <div id="dist_top">
-            <div id="dist_left">
-                <h2>Watch the following video {distractor.counter} by {distractor.problem}'s </h2>
-                <input id="dist_current" type="text"
-                       rv-enabled="distractor.countdown">
-                <br>
-                <span class="subtext"> Comprehension Check</span>
-            </div>
-            <div id="dist_timer">{distractor.countdown | toMinutes}</div>
-        </div>
-        <div id="dist_video">{ named</div>
-    </div>-->
-
 
     <div id="too_few">
         <h1>Uh-oh...</h1>
@@ -106,10 +66,6 @@
         <a class="start" href="#">Start next round</a>
     </div>
 
-
-
-
-
     <div id="endgame">
         <h1>Time's up!</h1>
         You named { game.items | length } {game.category}.
@@ -117,7 +73,7 @@
         <div id="postExptSurvey">
             <form id="demographicsForm">
                 <h3 id="surveyTitle">Post-Experiment Survey</h3>
-                <span class="subtext">Please complete this survey. NOTE: The HIT is not complete until filling out this survey.</span>
+                <span class="subtext">Please complete this survey. NOTE: The task is not complete until filling out this survey.</span>
                 <ul>
                     <li>
                         Gender<br>
@@ -129,7 +85,7 @@
                     <br>
                     <li>
                         Age
-                        <input type="text" name="age" size="3" maxlength="3" id="ageTxt" />
+                        <input type="text" name="age" size="3" maxlength="3" id="ageTxt" required />
                     </li>
                     <br>
                     For the next two questions, please be honest. You will be paid regardless of your response.
@@ -151,8 +107,8 @@
                         <textarea name="comments" cols="40" rows="8" wrap="hard"> </textarea>
                     </li>
                 </ul>
+                <input type="submit" value="Submit Survey">
             </form>
-        <a class= "submit" value="Submit Survey"></a>
     </div>
 
 </body>

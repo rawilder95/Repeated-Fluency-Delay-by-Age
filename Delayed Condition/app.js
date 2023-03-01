@@ -15,6 +15,8 @@ jatos.onLoad(function () {
 
         // variables for each game
         function gameObj() {
+            this.jatos_id = jatos.workerId;
+            this.prolific_id = jatos.studySessionData.prolificid;
             this.gamenum = 0;
             this.init = function () {
                 this.items = [];
@@ -34,9 +36,9 @@ jatos.onLoad(function () {
 
 
         var games = [];                    // Store game results
-        var categories = ["Animals"];  // Categories to use
-        var timeperlist = 3;                // 3 minutes per list
-        var game = new gameObj();               // Keeps track of current game
+        var categories = ["Animals"];      // Categories to use
+        var timeperlist = 60;               // 3 minutes per list
+        var game = new gameObj();          // Keeps track of current game
         var firstkey = 1;
 
         rivets.bind($('body'), { game: game });
@@ -66,6 +68,28 @@ jatos.onLoad(function () {
             }
         });
 
+        $("#demographicsForm").submit(function() {
+            var gender = $("input[name='gender']:checked").val();
+            var genderText = $("#genderTxt").val();
+            var ageText = $("#ageTxt").val();
+            var didYouTry = $("input[name='try']:checked").val();
+            var understand = $("input[name='understand']:checked").val();
+            var comments = $("textarea[name='comments']").val();
+            demographic_data = {
+                'prolific_id': jatos.studySessionData.prolificid,
+                'jatos_id': jatos.workerId,
+                'gender': gender,
+                'genderText': genderText,
+                'ageText': ageText,
+                'didYouTry': didYouTry,
+                'understand': understand,
+                'comments': comments
+            };
+            jatos.appendResultData(demographic_data);
+            jatos.endStudy();
+            return false;
+        });
+
         function startTimer() {
             var timer = setInterval(function () {
                 game.countdown--;
@@ -91,6 +115,8 @@ jatos.onLoad(function () {
         function endGame() {
             var gamecopy = $.extend(true, {}, game);
             games.push(gamecopy);
+            jatos.appendResultData(game);
+            
 
             $("#current").val("");
             $("#game").hide();
@@ -104,10 +130,6 @@ jatos.onLoad(function () {
                     $("#between_categories").show();
                 } else {
                     $("#endgame").show();
-                    //$.post("savedata.php", { json: JSON.stringify(games) });
-                    //$.post("savedata.php", { json: JSON.stringify(games) });
-                    jatos.submitResultsData(games);
-                    //jatos.endStudy();
                 }
             }
         }

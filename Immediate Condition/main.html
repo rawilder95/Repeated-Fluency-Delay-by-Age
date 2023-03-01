@@ -2,12 +2,11 @@
 <html>
 <head>
     <title>Naming Task</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'nonce-8Gowt2ZzJ+GXwAkiBNYSfQ==' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http: 'self' 'unsafe-inline' 'localhost:9000'">
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="https://www.jatos.org/jatos.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" defer></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rivets/0.8.0/rivets.bundled.min.js" defer></script>
+    <script src="jatos.js"></script>
+    <script type="text/javascript" src="jquery.min.js" defer></script>
+    <script type="text/javascript" src="rivets.bundle.min.js" defer></script>
     <script type="text/javascript" src="app.js" defer></script>
 </head>
 
@@ -42,7 +41,7 @@
                 <input id="current" type="text"
                        rv-enabled="game.countdown">
                 <br>
-                <span class="subtext">Press enter to submit after each item</span>
+                <span class="subtext">Press enter after each item</span>
             </div>
             <div id="timer">{game.countdown | toMinutes}</div>
         </div>
@@ -54,7 +53,7 @@
         <h1>Times up!</h1>
         You named { game.items | length } {game.category}.<br><br>
 
-        The next task will involve solving a series of arithmatic problems.  Please submit your responses just like before by pressing enter.  This task is timed, so don't worry if you get stuck on a particular problem or got one wrong.<br><br>
+        The next task will involve solving a series of arithmetic problems.  Please submit your responses just like before by pressing enter.  This task is timed, so don't worry if you get stuck on a particular problem or get one wrong.<br><br>
 
         <a class="start_distractor" href="#">Start Next Task</a>
     </div>
@@ -97,18 +96,14 @@
         <a class="start" href="#">Start next round</a>
     </div>
 
-
-
-
-
     <div id="endgame">
         <h1>Time's up!</h1>
         You named { game.items | length } {game.category}.
 
         <div id="postExptSurvey">
-            <form action="demographics.php" method="post">
+            <form id="demographicsForm">
                 <h3 id="surveyTitle">Post-Experiment Survey</h3>
-                <span class="subtext">Please complete this survey. NOTE: The HIT is not complete until filling out this survey.</span>
+                <span class="subtext">Please complete this survey. NOTE: The task is not complete until filling out this survey.</span>
                 <ul>
                     <li>
                         Gender<br>
@@ -120,7 +115,7 @@
                     <br>
                     <li>
                         Age
-                        <input type="text" name="age" size="3" maxlength="3" id="ageTxt" />
+                        <input type="text" name="age" size="3" maxlength="3" id="ageTxt" required />
                     </li>
                     <br>
                     For the next two questions, please be honest. You will be paid regardless of your response.
@@ -144,7 +139,6 @@
                 </ul>
                 <input type="submit" value="Submit Survey">
             </form>
-        </div>
     </div>
 
 </body>

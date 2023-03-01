@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jatos.js"></script>
+    <title>Informed Consent</title>
+    <meta charset="UTF-8">
+    <style>
+        /* CSS styles for the consent form */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #0072c6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .section {
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #0072c6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #005ea2;
+            }
+    </style>
+</head>
+<body>
+        <div class="header">
+            <h1>Informed Consent for Memory Study</h1>
+        </div>
+        <div class="section">
+            <h2>Study Details</h2>
+            <p><strong>Study Title:</strong> Understanding the cognitive mechanisms involved in memory encoding, storage, and retrieval</p>
+            <p><strong>Principal Investigator:</strong> Jeffrey Zemla, Assistant Professor</p>
+            <p><strong>Department and Institution:</strong> Department of Psychology, Syracuse University</p>
+            <p><strong>Time requirements:</strong> This study will take approximately 10 minutes to complete</p>
+            <p><strong>Compensation:</strong> You will be compensated at the rate of $10 per hour (pro-rated) based on the estimated time to complete this study.</p>
+        </div>
+        <div class="section">
+            <h2>Description</h2>
+            <p>You are being invited to participate in an experiment that will help us understand how memory works. Your participation is voluntary and you may withdraw from participation at any time without penalty.</p>
+            <p>In this study, you will be asked to perform simple memory tasks. These tasks include studying a list of words and being quizzed on them later and listing item from a category. You will also be asked to solve analytical problems. You may be asked to listen to music or tones during the task.</p>
+        </div>
+        <div class="section">
+            <h2>Confidentiality and Risks</h2>
+            <p>Whenever one works with email or the internet; there is always the risk of compromising privacy, confidentiality, and/or anonymity. Your confidentiality will be maintained to the degree permitted by the technology being used. It is important for you to understand that no guarantees can be made regarding the interception of data sent via the internet by third parties.</p>
+            <p>However, we will not ask you for any personally identifiable information (e.g., names, phone numbers, or e-mail addresses). Your responses may be made publicly available for research purposes, but your identity will remain anonymous. There are no known risks associated with participating in this study. </p>
+            <p><strong>Contact:</strong> If you have any questions, concerns or complaints about the research please contact:</p>
+            <ul>
+                <li>Prof. Jeffrey Zemla</li>
+                <li>Department of Psychology</li>
+                <li>Syracuse University</li>
+                <li><a href="mailto:jczemla@syr.edu">jczemla@syr.edu</a></li>
+            </ul>
+            <p>You may also contact the Syracuse University Office of Research Integrity and Protections (ORIP) at <a href="mailto:orip@syr.edu">orip@syr.edu</a>.</p>
+            <p><strong>Requirements:</strong> You must be 18 years of age or older to participate in this study.</p>
+            <form id="consent">
+            <label>
+                <input type="checkbox" name="consent" required> By checking this box, I agree to participate in this research.
+            </label>
+            <br>
+            <input type="submit" value="Next">
+            </form>
+        </div>
+    <script type="text/javascript">
+        jatos.onLoad(function () {
+            document.getElementById('consent').onsubmit = function() { 
+                jatos.startNextComponent();
+                return false; 
+            };
+        });
+    </script>
+</body>
